@@ -186,7 +186,7 @@ std::ostream& operator<<(std::ostream& output, const Vector& v1)
     for (int i=0; i < v1.GetSize(); i++)
     {
         output << v1.mData[i] << "; ";
-        if(i == v1.GetSize() - 1)
+        if (i == v1.GetSize() - 1)
         {
             output << v1.mData[i] << " ";
         }

@@ -162,6 +162,37 @@ Matrix Matrix::operator*(double a) const
     return mat;
 }
 
+Matrix Matrix::Transpose() const
+{
+    Matrix mat(mNumRows, mNumCols);
+
+    if(mNumRows==mNumCols) // square matrix
+    {
+        for (int i=0; i<mNumRows; i++)
+        {
+            for (int j=0; j<mNumCols; j++)
+            {
+                mat(i+1, j+1) = mData[j][i];
+            }
+        }
+    }
+    else // an arbitrary matrix eg.rectangular
+    {
+        int temp = mat.mNumRows;
+        mat.mNumRows = mat.mNumCols;
+        mat.mNumCols = temp;
+
+        for (int i=0; i<mNumCols; i++)
+        { // M x N -> N x M, start from N which is #cols previous
+            for (int j=0; j<mNumRows; j++)
+            {
+                mat(i+1, j+1) = mData[j][i];
+            }
+        }
+    }
+
+}
+
 double Matrix::CalculateDeterminant() const
 {
     assert(mNumRows == mNumCols);
@@ -231,4 +262,28 @@ Vector operator*(const Vector& v, const Matrix& m)
     }
 
     return new_vector;
+}
+
+std::ostream& operator<<(std::ostream& output, const Matrix& m1)
+{
+    // Format as "[ a, b, c ]
+    //            [ d, e, f ]"
+
+    for (int i=0; i < m1.mNumRows; i++ )
+    {
+        output << "[ ";
+        for (int j=0; j < m1.mNumCols; j++)
+        {
+            if (j == m1.mNumCols - 1)
+            {
+                output << m1.mData[i][j] << " ";
+            }
+            else
+            {
+                output << m1.mData[i][j] << ", ";
+            }
+        }
+        output << "] \n";
+    }
+    return output;
 }
