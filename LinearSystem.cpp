@@ -78,6 +78,7 @@ Vector LinearSystem::Solve()
             rb(i+1) -= rb(k+1) * m(i+1);
         }
     }
+  
 
     // back substitution
     for (int i=mSize-1; i>-1; i--)
@@ -139,6 +140,13 @@ Vector LinearSystem::SolveTDMA()
     for (int i=mSize-1; i>-1; i--)
     {
         solution(i) = P(i) * solution(i+1) + Q(i);
+
+        solution(i+1) = rb(i+1);
+        for (int j=i+1; j<mSize; j++)
+        {
+            solution(i+1) -= rA(i+1, j+1) * solution(j+1);
+        }
+        solution(i+1) /= rA(i+1, i+1);
     }
 
     return solution;
