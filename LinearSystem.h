@@ -13,14 +13,16 @@ private:
     Matrix* mpA; // matrix for linear system
     Vector* mpb; // vector for linear system
 
-    //LinearSystem (const LinearSystem& otherLinearSystem);
+    LinearSystem(const LinearSystem& otherLinearSystem){}
 
 public:
-    //LinearSystem(const Matrix& A, const Vector& b);
+    LinearSystem(const Matrix& A, const Vector& b);
 
     ~LinearSystem();
 
     virtual Vector Solve();
+
+    virtual Vector SolveTDMA();
 };
 
 #endif // LINEARSYSTEM_H
