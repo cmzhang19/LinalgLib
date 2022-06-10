@@ -29,6 +29,8 @@ public:
     // scalar multiplication
     Matrix operator*(double a) const;
 
+    Matrix Transpose() const;
+
     double CalculateDeterminant() const;
 
     friend Vector operator*(const Matrix& m,
@@ -36,6 +38,11 @@ public:
 
     friend Vector operator*(const Vector& v,
                             const Matrix& m);
+
+    // output operator
+    friend std::ostream& operator<<(std::ostream& output,
+                                    const Matrix& m1);
+
 };
 
 // prototype signature for friend operators

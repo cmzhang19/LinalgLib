@@ -20,6 +20,7 @@ int main()
     mat1(2,2) = 2;
 
     cout << "determinant: " << mat1.CalculateDeterminant() << endl;
+    cout << mat1 << endl;
 
     return 0;
 }
