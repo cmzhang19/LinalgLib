@@ -21,6 +21,8 @@ public:
     ~LinearSystem();
 
     virtual Vector Solve();
+
+    virtual Vector SolveTDMA();
 };
 
 #endif // LINEARSYSTEM_H
