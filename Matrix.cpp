@@ -190,7 +190,7 @@ Matrix Matrix::Transpose() const
             }
         }
     }
-
+    return mat;
 }
 
 double Matrix::CalculateDeterminant() const
@@ -268,7 +268,9 @@ std::ostream& operator<<(std::ostream& output, const Matrix& m1)
 {
     // Format as "[ a, b, c ]
     //            [ d, e, f ]"
+    // 需要更新打印形式,当前形式容易与两个vector混淆
 
+    output << "Matrix:\n";
     for (int i=0; i < m1.mNumRows; i++ )
     {
         output << "[ ";
