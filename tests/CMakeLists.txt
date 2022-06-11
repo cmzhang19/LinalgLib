@@ -9,16 +9,19 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-  test
-  test.cc
-)
-target_link_libraries(
-  test
-  gtest_main
-)
+add_executable(VectorTest VectorTest.cc)
+
+target_link_libraries(VectorTest gtest_main)
+
+add_executable(MatrixTest MatrixTest.cc)
+
+target_link_libraries(MatrixTest gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(test)
+gtest_discover_tests(VectorTest)
 
-target_link_libraries(test LinalgLib)
+target_link_libraries(VectorTest LinalgLib)
+
+gtest_discover_tests(MatrixTest)
+
+target_link_libraries(MatrixTest LinalgLib)

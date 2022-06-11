@@ -94,7 +94,7 @@ Matrix Matrix::operator+() const
     Matrix mat(mNumRows, mNumCols);
     for (int i=0; i<mNumRows; i++)
     {
-        for (int j=0; i<mNumCols; j++)
+        for (int j=0; j<mNumCols; j++)
         {
             mat(i+1, j+1) = mData[i][j];
         }
